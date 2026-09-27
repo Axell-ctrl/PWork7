@@ -28,7 +28,7 @@ namespace Практическая_работа__7
                 Console.WriteLine("Здравствуйте!");
                 Console.Write("Введите количество участников в 3 школах: ");
                 students = Int32.Parse(Console.ReadLine());
-
+                Console.WriteLine();
                 int MaxStudentScore = 0, BestStudentNumber = 0, BestSchool = 0;
                 for (int i = 1; i <= 3; i++)//цикл с количеством школ
                 {
@@ -42,6 +42,8 @@ namespace Практическая_работа__7
                             score2 += score;//то зачисляем баллы 2 школе
                         else//иначе
                             score3 += score;//зачисляем баллы 3 школе
+                        
+                        Console.WriteLine($"Школа {i}, участник {j}: {score}");//вывод каждого участника из 3 школ
 
                         if (score > MaxStudentScore)//если счёт больше максимального
                         {
@@ -51,7 +53,7 @@ namespace Практическая_работа__7
                         }
                     }
                 }
-                Console.WriteLine($"Школа 1: {score1}");
+                Console.WriteLine($"\nШкола 1: {score1}");
                 Console.WriteLine($"Школа 2: {score2}");
                 Console.WriteLine($"Школа 3: {score3}");
                 Console.WriteLine($"Победитель: Школа {BestSchool}");
