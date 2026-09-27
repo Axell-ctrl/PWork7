@@ -57,7 +57,7 @@ namespace Практическая_работа__7
                 Console.WriteLine($"Школа 2: {score2}");
                 Console.WriteLine($"Школа 3: {score3}");
                 Console.WriteLine($"Победитель: Школа {BestSchool}");
-                Console.WriteLine($"Лучший участник: Школа {BestSchool}, участник {BestStudentNumber}");
+                Console.WriteLine($"Лучший участник: Школа {BestSchool}, участник {BestStudentNumber} ({MaxStudentScore} баллов).");
             }
             catch (FormatException fex)//обработчик исключения FormatException (входная строка имела неправильный формат)
             {
