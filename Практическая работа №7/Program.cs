@@ -22,7 +22,7 @@ namespace Практическая_работа__7
             Console.Title = "Практическая работа №7";//задаёт значение в заголовок консоли
 
             int students, score1 = 0, score2 = 0, score3 = 0;
-            
+
             try
             {
                 Console.WriteLine("Здравствуйте!");
@@ -30,42 +30,49 @@ namespace Практическая_работа__7
                 students = Int32.Parse(Console.ReadLine());
                 Console.WriteLine();
                 int MaxStudentScore = 0, BestStudentNumber = 0, BestSchool = 0;
-                for (int i = 1; i <= 3; i++)//цикл с количеством школ
+                if (students <= 0)
                 {
-                    for (int j = 1; j <= students; j++)//вложенный цикл с количеством участников
+                    Console.WriteLine($"Вы ввели недопустимое число студентов: {students}");
+                }
+                else
+                {
+                    for (int i = 1; i <= 3; i++)//цикл с количеством школ
                     {
-                        int score = i * 10 + j * 3;//выражение для баллов школ
-
-                        if (i == 1)//если школа под номером 1
-                            score1 += score;//то зачисляем баллы 1 школе
-                        else if (i == 2)//иначе если школа под номером 2
-                            score2 += score;//то зачисляем баллы 2 школе
-                        else//иначе
-                            score3 += score;//зачисляем баллы 3 школе
-                        
-                        Console.WriteLine($"Школа {i}, участник {j}: {score}");//вывод каждого участника из 3 школ
-
-                        if (score > MaxStudentScore)//если счёт больше максимального
+                        for (int j = 1; j <= students; j++)//вложенный цикл с количеством участников
                         {
-                            MaxStudentScore = score;//максимальный счёт равен данному
-                            BestStudentNumber = j;//записывается номер студента в зависимости значения j
-                            BestSchool = i;//записывается номер школы в зависимости значения i
+                            int score = i * 10 + j * 3;//выражение для баллов школ
+
+                            if (i == 1)//если школа под номером 1
+                                score1 += score;//то зачисляем баллы 1 школе
+                            else if (i == 2)
+                                score2 += score;
+                            else
+                                score3 += score;
+
+                            Console.WriteLine($"Школа {i}, участник {j}: {score}");//вывод каждого участника из 3 школ
+
+                            if (score > MaxStudentScore)//если счёт больше максимального
+                            {
+                                MaxStudentScore = score;//максимальный счёт равен данному
+                                BestStudentNumber = j;//записывается номер студента в зависимости значения j
+                                BestSchool = i;//записывается номер школы в зависимости значения i
+                            }
                         }
                     }
+                    Console.WriteLine($"\nШкола 1: {score1}");
+                    Console.WriteLine($"Школа 2: {score2}");
+                    Console.WriteLine($"Школа 3: {score3}");
+                    Console.WriteLine($"Победитель: Школа {BestSchool}");
+                    Console.WriteLine($"Лучший участник: Школа {BestSchool}, участник {BestStudentNumber} ({MaxStudentScore} баллов).");
                 }
-                Console.WriteLine($"\nШкола 1: {score1}");
-                Console.WriteLine($"Школа 2: {score2}");
-                Console.WriteLine($"Школа 3: {score3}");
-                Console.WriteLine($"Победитель: Школа {BestSchool}");
-                Console.WriteLine($"Лучший участник: Школа {BestSchool}, участник {BestStudentNumber} ({MaxStudentScore} баллов).");
             }
-            catch (FormatException fex)//обработчик исключения FormatException (входная строка имела неправильный формат)
+            catch (FormatException fex)//обработка исключения FormatException (входная строка имела неправильный формат)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Что-то пошло не так! Ошибка: {fex.Message}");//Вывод текста с помощью интерполяции: Что-то пошло не так! Ошибка: Входная строка имела неправильный формат. 
                 Console.ForegroundColor = ConsoleColor.White;
             }
-            catch (OverflowException ofex)//обработчик исключения OverflowException (Значение было недопустимо малым или недопустимо большим для Int32)
+            catch (OverflowException ofex)//обработка исключения OverflowException (Значение было недопустимо малым или недопустимо большим для Int32)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Что-то пошло не так! Ошибка: {ofex.Message}");//Вывод текста с помощью интерполяции: Что-то пошло не так! Ошибка: Значение было недопустимо малым или недопустимо большим для Int32.
