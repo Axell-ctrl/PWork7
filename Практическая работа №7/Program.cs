@@ -22,17 +22,15 @@ namespace Практическая_работа__7
             Console.Title = "Практическая работа №7";//задаёт значение в заголовок консоли
 
             int students, score1 = 0, score2 = 0, score3 = 0;
-
             try
             {
                 Console.WriteLine("Здравствуйте!");
                 Console.Write("Введите количество участников в 3 школах: ");
                 students = Int32.Parse(Console.ReadLine());
-                Console.WriteLine();
                 int MaxStudentScore = 0, BestStudentNumber = 0, BestSchool = 0;
                 if (students <= 0)
                 {
-                    Console.WriteLine($"Вы ввели недопустимое число студентов: {students}");
+                    Console.WriteLine("Вы ввели недопустимое число студентов.");
                 }
                 else
                 {
